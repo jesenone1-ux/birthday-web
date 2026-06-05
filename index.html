@@ -1,194 +1,346 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday, My Everything ❤️</title>
+    <title>Happy Birthday, My Love 🎂🌸</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap');
-
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #12070b 0%, #210d15 50%, #17090e 100%);
-            background-attachment: fixed;
-            color: #f3e8eb;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #fce7f3 0%, #fce7f3 50%, #f3e8ff 100%);
+            color: #6b5b95;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        #flower-canvas {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        /* 1. LAYAR PEMBUKA */
-        #gift-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0a0406;
-            z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            cursor: pointer; transition: opacity 0.8s ease, visibility 0.8s;
-        }
-        .gift-box { font-size: 4.5rem; animation: bounce 2s infinite; margin-bottom: 25px; }
-        #gift-overlay p { font-size: 0.95rem; letter-spacing: 3px; color: #b5a4a7; }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-25px); }
-            60% { transform: translateY(-12px); }
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeIn 1s ease-in;
         }
 
-        .main-content { opacity: 0; transition: opacity 1.5s ease; }
-
-        section {
-            min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 100px 20px; text-align: center; position: relative; z-index: 2; max-width: 800px; margin: 0 auto;
+        .header-emoji {
+            font-size: 3rem;
+            margin-bottom: 10px;
         }
 
-        /* ANIMASI SCROLL FADE IN */
-        .fade-in-element {
-            opacity: 0; transform: translateY(40px); transition: opacity 1.2s ease, transform 1.2s ease;
-        }
-        .fade-in-element.visible { opacity: 1; transform: translateY(0); }
-
-        /* HERO */
-        .hero p.tagline { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 5px; color: #9c7a82; margin-bottom: 20px; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.2; color: #ffffff; }
-        .hero h1 span { display: block; font-style: italic; color: #ff7597; margin-top: 8px; }
-        .hero .description { margin-top: 30px; font-size: 1.05rem; color: #cca4ad; max-width: 580px; line-height: 1.7; }
-        .scroll-down { margin-top: 50px; color: #888; text-decoration: none; font-size: 0.85rem; letter-spacing: 2px; }
-
-        /* MESSAGE SECTION */
-        .message h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 25px 0; }
-        .message h2 em { font-style: italic; color: #ff7597; }
-        .message-text { font-size: 1.05rem; line-height: 1.9; color: #cca4ad; max-width: 620px; margin-bottom: 20px; }
-
-        /* CELEBRATE GRID (6 POIN SEPERTI DI LINK) */
-        .celebrate-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; width: 100%; margin-top: 40px;
-        }
-        .celebrate-card {
-            background: rgba(24, 17, 20, 0.6); border: 1px solid rgba(255, 117, 151, 0.1);
-            padding: 25px; border-radius: 16px; text-align: left;
-        }
-        .celebrate-card icon { font-size: 1.5rem; display: block; margin-bottom: 10px; }
-        .celebrate-card h3 { font-family: 'Playfair Display', serif; color: #ffffff; margin-bottom: 10px; }
-        .celebrate-card p { font-size: 0.9rem; color: #cca4ad; line-height: 1.6; }
-
-        /* PICTURES */
-        .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; width: 100%; margin-top: 40px; }
-        .photo-box { background: #1f0f15; border: 1px solid rgba(255,117,151,0.1); padding: 10px; border-radius: 12px; }
-        .photo-box img { width: 100%; height: 260px; object-fit: cover; border-radius: 8px; }
-        .photo-box .caption { margin-top: 10px; font-family: 'Playfair Display', serif; font-style: italic; color: #ff7597; }
-
-        /* 2. POPUP MUSIC PLAYER (UKURAN KECIL & TIDAK UTK MENUTUP LAYAR) */
-        #music-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 4, 6, 0.65);
-            backdrop-filter: blur(6px); z-index: 2000; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden; transition: 0.4s;
-        }
-        #music-container.active { opacity: 1; visibility: visible; }
-
-        .music-card {
-            background: #181114; border: 1px solid rgba(255, 117, 151, 0.15);
-            width: 280px; padding: 20px; border-radius: 20px; display: flex; flex-direction: column; align-items: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-        .album-art { width: 240px; height: 240px; object-fit: cover; border-radius: 12px; margin-bottom: 15px; filter: grayscale(20%); }
-        .track-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #ffffff; margin-bottom: 4px; text-align: center; }
-        .track-artist { font-size: 0.75rem; color: #ff7597; letter-spacing: 1px; margin-bottom: 15px; }
-
-        .timeline-container { width: 100%; margin-bottom: 6px; }
-        .progress-timeline { width: 100%; height: 3px; background: #36252b; border-radius: 2px; }
-        .progress-fill { height: 100%; width: 0%; background: #ff7597; border-radius: 2px; }
-        .time-indicators { width: 100%; display: flex; justify-content: space-between; font-size: 0.7rem; color: #8a7378; margin-bottom: 15px; }
-        
-        .controls { display: flex; align-items: center; justify-content: center; gap: 20px; width: 100%; }
-        .control-btn { background: none; border: none; color: #cca4ad; font-size: 1rem; cursor: pointer; }
-        .play-pause-btn {
-            width: 45px; height: 45px; background: #2a1920; border: 1px solid rgba(255, 117, 151, 0.2);
-            border-radius: 50%; color: #ff7597; font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer;
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #d946a6;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
-        .close-player-circle {
-            margin-top: 20px; width: 45px; height: 45px; border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: #ffffff; font-size: 1.2rem; cursor: pointer; background: rgba(24, 17, 20, 0.4);
+        .subtitle {
+            font-size: 1.1rem;
+            color: #9333ea;
+            margin-bottom: 30px;
+            font-style: italic;
         }
-        .close-player-circle:hover { color: #ff7597; border-color: #ff7597; }
 
-        .open-player-nav {
-            position: fixed; bottom: 20px; right: 20px; background: #181114; border: 1px solid #ff7597;
-            color: #ff7597; padding: 10px 15px; border-radius: 30px; cursor: pointer; font-size: 0.8rem; z-index: 100;
+        .section {
+            margin-bottom: 80px;
+            animation: slideUp 0.8s ease-out;
         }
-        footer { padding: 60px 20px; text-align: center; font-size: 0.8rem; color: #9c7a82; }
+
+        .section h2 {
+            font-size: 2rem;
+            color: #d946a6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section h3 {
+            font-size: 1.3rem;
+            color: #9333ea;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .content-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #6b5b95;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .flowers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .flower-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .flower-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(217, 70, 166, 0.3);
+        }
+
+        .flower-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .flower-name {
+            font-weight: 600;
+            color: #d946a6;
+            margin-bottom: 8px;
+        }
+
+        .flower-wish {
+            font-size: 0.9rem;
+            color: #9333ea;
+            font-style: italic;
+        }
+
+        .celebration-qualities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .quality {
+            background: rgba(217, 70, 166, 0.1);
+            border-left: 4px solid #d946a6;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .quality-emoji {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .quality-title {
+            font-weight: 600;
+            color: #d946a6;
+            margin-bottom: 5px;
+        }
+
+        .quality-text {
+            font-size: 0.9rem;
+            color: #6b5b95;
+        }
+
+        .decorative-flowers {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 30px 0;
+            letter-spacing: 10px;
+        }
+
+        .closing {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            background: rgba(217, 70, 166, 0.1);
+            border-radius: 15px;
+        }
+
+        .closing-heart {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .closing-text {
+            font-size: 1.05rem;
+            color: #6b5b95;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .signature {
+            font-size: 1rem;
+            color: #9333ea;
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 2px solid rgba(217, 70, 166, 0.2);
+            color: #9333ea;
+            font-size: 0.95rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .section h2 { font-size: 1.5rem; }
+            .flowers-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 15px;
+            }
+            .celebration-qualities {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <div class="header-emoji">🎂 ✨</div>
+            <h1>Happy Birthday, My Everything</h1>
+            <p class="subtitle">a birthday serenade in bloom</p>
+            <p class="content-text">Today the whole universe is celebrating the day you were born into my world.</p>
+        </header>
 
-    <div id="gift-overlay" onclick="openGift()">
-        <div class="gift-box">🎁</div>
-        <p>🎂 tap to open your gift ✨</p>
-    </div>
+        <section class="section">
+            <div class="decorative-flowers">🌸 🌺 🌸</div>
+            <p class="content-text">from the bottom of my heart</p>
+            <h2>Today is the day the world became more beautiful.</h2>
+            <p class="content-text">
+                The day you were born is the best thing that ever happened to this world — and to me. 
+                Every year I get to spend beside you is a gift I never take for granted. You make ordinary days feel like magic 
+                and magical days feel like dreams.<br><br>
+                These flowers are a tiny token of the enormous love I carry for you. No bouquet in the world is big enough, 
+                no song sweet enough, no poem long enough — but know that every single one is yours. 
+                Happy Birthday, my love. 🎂
+            </p>
+            <p class="signature">— Yours, always & forever 🌹</p>
+        </section>
 
-    <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
-
-    <div id="music-container">
-        <div class="music-card">
-            <img class="album-art" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400" alt="Foto">
-            <div class="track-title">Semua Aku Dirayakan</div>
-            <div class="track-artist">Nadin Amizah</div>
-
-            <div class="timeline-container">
-                <div class="progress-timeline"><div class="progress-fill" id="progress-fill"></div></div>
-            </div>
-            <div class="time-indicators">
-                <span id="curr-time">0:00</span>
-                <span id="total-time">-:--</span>
-            </div>
-
-            <div class="controls">
-                <button class="control-btn">⏮</button>
-                <div class="play-pause-btn" onclick="togglePlay()" id="play-btn">⏸</div>
-                <button class="control-btn">⏭</button>
-            </div>
-        </div>
-        <div class="close-player-circle" onclick="closePlayer()">×</div>
-    </div>
-
-    <button class="open-player-nav" onclick="openPlayer()">🎵 Music Player</button>
-
-    <div id="main-wrapper" class="main-content">
-        <canvas id="flower-canvas"></canvas>
-
-        <section class="hero">
-            <div class="fade-in-element visible">
-                <p class="tagline">a birthday serenade in bloom</p>
-                <h1>Happy Birthday,<br><span>My Everything</span></h1>
-                <p class="description">Today the whole universe is celebrating the day you were born into my world. You make ordinary days feel like magic.</p>
-                <a href="#message" class="scroll-down">Discover your birthday surprise<br><span>↓</span></a>
+        <section class="section">
+            <div class="decorative-flowers">🌸 🌺 🌼 🌸 🌷</div>
+            <p class="content-text">a thousand birthday wishes</p>
+            <h2>What I Celebrate About You</h2>
+            
+            <div class="celebration-qualities">
+                <div class="quality">
+                    <div class="quality-emoji">🌹</div>
+                    <div class="quality-title">Your Smile</div>
+                    <div class="quality-text">The one that made me fall — and still does, every single day.</div>
+                </div>
+                <div class="quality">
+                    <div class="quality-emoji">💫</div>
+                    <div class="quality-title">Your Soul</div>
+                    <div class="quality-text">Rare, luminous, and more precious than anything this world has to offer.</div>
+                </div>
+                <div class="quality">
+                    <div class="quality-emoji">🌸</div>
+                    <div class="quality-title">Your Kindness</div>
+                    <div class="quality-text">The way you love makes this world a softer, better place.</div>
+                </div>
+                <div class="quality">
+                    <div class="quality-emoji">✨</div>
+                    <div class="quality-title">Your Laughter</div>
+                    <div class="quality-text">My favourite sound in the universe. May today be filled with endless reasons to laugh.</div>
+                </div>
+                <div class="quality">
+                    <div class="quality-emoji">🌺</div>
+                    <div class="quality-title">Your Strength</div>
+                    <div class="quality-text">You've walked through storms with such grace. I admire you more every year.</div>
+                </div>
+                <div class="quality">
+                    <div class="quality-emoji">💖</div>
+                    <div class="quality-title">Simply You</div>
+                    <div class="quality-text">Every version of you is more than enough. You are everything.</div>
+                </div>
             </div>
         </section>
 
-        <section id="message" class="message">
-            <div class="fade-in-element">
-                <p class="sub" style="text-transform: uppercase; letter-spacing: 3px; color: #9c7a82;">from the bottom of my heart</p>
-                <h2>Today is the day<br><em>the world became</em><br>more beautiful.</h2>
-                <p class="message-text">The day you were born is the best thing that ever happened to this world — and to me. Every year I get to spend beside you is a gift I never take for granted.</p>
-                <p class="message-text">These words are a tiny token of the enormous love I carry for you. No bouquet in the world is big enough, no song sweet enough — but know that every single piece of my heart is yours.</p>
+        <section class="section">
+            <p class="content-text">your birthday garden</p>
+            <h2>A Garden Blooming Just For You Today</h2>
+            
+            <div class="flowers-grid">
+                <div class="flower-card">
+                    <div class="flower-emoji">🌹</div>
+                    <div class="flower-name">Rose</div>
+                    <div class="flower-wish">May love surround you always</div>
+                </div>
+                <div class="flower-card">
+                    <div class="flower-emoji">🌸</div>
+                    <div class="flower-name">Cherry Blossom</div>
+                    <div class="flower-wish">May today be as soft as you</div>
+                </div>
+                <div class="flower-card">
+                    <div class="flower-emoji">🪷</div>
+                    <div class="flower-name">Lotus</div>
+                    <div class="flower-wish">May you bloom in all your glory</div>
+                </div>
+                <div class="flower-card">
+                    <div class="flower-emoji">🌺</div>
+                    <div class="flower-name">Hibiscus</div>
+                    <div class="flower-wish">May passion light your path</div>
+                </div>
+                <div class="flower-card">
+                    <div class="flower-emoji">🌼</div>
+                    <div class="flower-name">Daisy</div>
+                    <div class="flower-wish">May joy follow you everywhere</div>
+                </div>
+                <div class="flower-card">
+                    <div class="flower-emoji">🌷</div>
+                    <div class="flower-name">Tulip</div>
+                    <div class="flower-wish">May all your wishes come true</div>
+                </div>
+                <div class="flower-card">
+                    <div class="flower-emoji">🌻</div>
+                    <div class="flower-name">Sunflower</div>
+                    <div class="flower-wish">May your year shine bright</div>
+                </div>
             </div>
         </section>
 
-        <section class="celebrate">
-            <div class="fade-in-element">
-                <p class="sub" style="text-transform: uppercase; letter-spacing: 3px; color: #9c7a82;">a thousand birthday wishes</p>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 15px 0;">What I Celebrate About You</h2>
-                
-                <div class="celebrate-grid">
-                    <div class="celebrate-card">
-                        <icon>🌹</icon>
-                        <h3>Your Smile</h3>
-                        <p>Senyuman yang selalu berhasil mencuri hatiku setiap hari, dan menenangkan duniaku yang bising.</p>
-                    </div>
-                    <div class="celebrate-card">
-                        <icon>💫</icon>
-                        <h3>Your Soul</h3>
-                        <p>Jiwa yang tulus, bersinar, dan jauh lebih berharga dari apa pun yang ditawarkan dunia ini.</p>
-                        
+        <section class="section">
+            <div class="closing">
+                <div class="closing-heart">💗</div>
+                <h2>You Are Loved More Than You Know</h2>
+                <p class="closing-text">
+                    On this beautiful day that belongs entirely to you — I want you to know that loving you is the greatest 
+                    adventure of my life. Every year with you is a gift I treasure. Every laugh, every moment, every quiet 
+                    heartbeat beside yours. Here's to you, today and every day after. Happy Birthday, my love. 🌸
+                </p>
+                <p class="signature">Made with endless love, just for you 🎂🌸</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>✨ A birthday page made with love ✨</p>
+    </footer>
+</body>
+    </html>
