@@ -16,11 +16,22 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            /* Background gradasi pastel mewah sesuai contoh asli */
-            background: linear-gradient(135deg, #fff5f6 0%, #ffebf0 50%, #fef0eb 100%);
+            /* Warna latar belakang gelap keunguan/merah muda estetik sesuai gambar */
+            background: linear-gradient(135deg, #12070b 0%, #210d15 50%, #17090e 100%);
             background-attachment: fixed;
-            color: #2b2b2b;
+            color: #f3e8eb;
             overflow-x: hidden;
+        }
+
+        /* CANVAS KELOPAK BUNGA GUGUR */
+        #flower-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
         }
 
         /* 1. LAYAR PEMBUKA (GIFT SCREEN) */
@@ -30,7 +41,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #111111;
+            background: #0a0406;
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -50,7 +61,7 @@
         #gift-overlay p {
             font-size: 0.95rem;
             letter-spacing: 3px;
-            color: #e0e0e0;
+            color: #b5a4a7;
             font-weight: 300;
         }
 
@@ -60,18 +71,7 @@
             60% { transform: translateY(-12px); }
         }
 
-        /* 2. BACKGROUND CANVAS (KELOPAK BUNGA GUGUR) */
-        #flower-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* 3. STRUKTUR HALAMAN */
+        /* 2. STRUKTUR HALAMAN UTAMA */
         .main-content {
             opacity: 0;
             transition: opacity 1.5s ease;
@@ -108,7 +108,7 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 5px;
-            color: #a3888b;
+            color: #9c7a82;
             margin-bottom: 20px;
         }
 
@@ -116,7 +116,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 3.8rem;
             line-height: 1.2;
-            color: #1a1a1a;
+            color: #ffffff;
             font-weight: 600;
         }
 
@@ -124,57 +124,40 @@
             display: block;
             font-style: italic;
             font-weight: 400;
-            color: #d63384;
+            color: #ff7597;
             margin-top: 8px;
         }
 
         .hero .description {
             margin-top: 30px;
             font-size: 1.05rem;
-            color: #5a5a5a;
+            color: #cca4ad;
             max-width: 580px;
             line-height: 1.7;
         }
 
-        .scroll-down {
-            margin-top: 60px;
-            color: #999;
-            text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+        /* TOMBOL UNTUK MEMBUKA POPUP LAGU MUNCUL KEMBALI */
+        .open-player-btn {
+            margin-top: 30px;
+            background: rgba(255, 117, 151, 0.2);
+            border: 1px solid #ff7597;
+            color: #ff7597;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
-
-        .scroll-down span {
-            display: block;
-            margin-top: 12px;
-            font-size: 1.2rem;
-            animation: arrow 1.5s infinite;
-        }
-
-        @keyframes arrow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(8px); }
+        .open-player-btn:hover {
+            background: #ff7597;
+            color: #12070b;
         }
 
         /* MESSAGE SECTION */
-        .message-flower-icons {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            letter-spacing: 12px;
-        }
-
-        .message p.sub {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #a3888b;
-        }
-
         .message h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.6rem;
-            color: #1a1a1a;
+            color: #ffffff;
             margin: 25px 0;
             font-weight: 600;
             line-height: 1.4;
@@ -182,174 +165,238 @@
 
         .message h2 em {
             font-style: italic;
-            color: #d63384;
+            color: #ff7597;
         }
 
         .message-text {
             font-size: 1.05rem;
             line-height: 1.9;
-            color: #4a4a4a;
+            color: #cca4ad;
             max-width: 620px;
             margin-bottom: 20px;
         }
 
-        .signature {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.25rem;
-            color: #d63384;
-            margin-top: 45px;
-        }
-
         /* PICTURES SECTION */
-        .pictures p.sub {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #a3888b;
-            margin-bottom: 20px;
-        }
-
-        .pictures h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            margin-bottom: 50px;
-        }
-
-        .pictures h2 em {
-            font-style: italic;
-            color: #d63384;
-        }
-
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 25px;
             width: 100%;
-            max-width: 900px;
+            margin-top: 40px;
         }
 
         .photo-box {
-            background: #ffffff;
-            border: 1px solid rgba(0,0,0,0.04);
+            background: #1f0f15;
+            border: 1px solid rgba(255,117,151,0.1);
             padding: 12px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-            transition: transform 0.4s ease;
-        }
-
-        .photo-box:hover {
-            transform: translateY(-5px);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .photo-box img {
             width: 100%;
             height: 280px;
             object-fit: cover;
-            border-radius: 4px;
+            border-radius: 8px;
         }
 
         .photo-box .caption {
             margin-top: 12px;
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            color: #555;
+            color: #ff7597;
             font-size: 1rem;
         }
 
-        /* 4. WIDGET MUSIK SPOTIFY (POJOK HALAMAN) */
-        .spotify-player {
+        /* 3. MODAL POPUP MUSIC PLAYER (PERSIS SEPERTI SCREENSHOT) */
+        #music-container {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 12px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 4, 6, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        #music-container.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .music-card {
+            background: #181114;
+            border: 1px solid rgba(255, 117, 151, 0.15);
+            width: 360px;
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .album-art {
+            width: 100%;
+            height: 310px;
+            object-fit: cover;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            filter: grayscale(30%); /* Efek agak hitam-putih estetik seperti contoh */
+        }
+
+        .track-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: #ffffff;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .track-artist {
+            font-size: 0.85rem;
+            color: #ff7597;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Progress Bar Timeline */
+        .timeline-container {
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .progress-timeline {
+            width: 100%;
+            height: 4px;
+            background: #36252b;
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 40%; /* Mengikuti jalannya lagu */
+            background: #ff7597;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .progress-pin {
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            right: -6px;
+            top: -4px;
+            box-shadow: 0 0 10px #ff7597;
+        }
+
+        .time-indicators {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #8a7378;
+            margin-bottom: 25px;
+        }
+
+        /* Controls Button */
+        .controls {
             display: flex;
             align-items: center;
-            z-index: 1000;
-            font-family: 'Poppins', sans-serif;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            width: 100%;
         }
 
-        .spotify-album-art {
+        .control-btn {
+            background: none;
+            border: none;
+            color: #cca4ad;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .control-btn:hover { color: #ff7597; }
+
+        .play-pause-btn {
             width: 55px;
             height: 55px;
-            border-radius: 8px;
-            object-fit: cover;
-            margin-right: 12px;
-        }
-
-        .spotify-info {
-            flex-grow: 1;
-            overflow: hidden;
-            margin-right: 8px;
-        }
-
-        .spotify-title {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #111;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .spotify-artist {
-            font-size: 0.75rem;
-            color: #666;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .spotify-controls {
+            background: #2a1920;
+            border: 1px solid rgba(255, 117, 151, 0.3);
+            border-radius: 50%;
+            color: #ff7597;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            width: 32px;
-            height: 32px;
-            background: #1db954; /* Warna hijau Spotify */
+            transition: all 0.2s;
+        }
+        .play-pause-btn:hover {
+            transform: scale(1.05);
+            background: #3d242e;
+        }
+
+        /* Volume Bar */
+        .volume-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 5px;
+        }
+        .volume-icon { font-size: 0.85rem; color: #8a7378; }
+        .volume-bar {
+            flex-grow: 1;
+            height: 3px;
+            background: #36252b;
+            border-radius: 2px;
+        }
+        .volume-fill {
+            width: 70%;
+            height: 100%;
+            background: #ff7597;
+            border-radius: 2px;
+        }
+
+        /* Tombol Close Silang Gede di Bawah */
+        .close-player-container {
+            margin-top: 30px;
+        }
+        .close-player-circle {
+            width: 60px;
+            height: 60px;
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 0.8rem;
-            box-shadow: 0 4px 10px rgba(29, 185, 84, 0.3);
-            transition: transform 0.2s;
+            color: #ffffff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+            background: rgba(24, 17, 20, 0.4);
         }
-
-        .spotify-controls:hover {
-            transform: scale(1.05);
-        }
-
-        .spotify-progress-container {
-            position: absolute;
-            bottom: 0;
-            left: 12px;
-            width: calc(100% - 24px);
-            height: 3px;
-            background: #e0e0e0;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .spotify-progress-bar {
-            height: 100%;
-            width: 0%;
-            background: #1db954;
-            transition: width 0.5s linear;
-        }
-
-        /* FOOTER */
-        footer {
-            padding: 60px 20px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #a3888b;
-            letter-spacing: 1px;
+        .close-player-circle:hover {
+            border-color: #ff7597;
+            color: #ff7597;
+            transform: rotate(90deg);
         }
     </style>
 </head>
@@ -360,102 +407,104 @@
         <p>🎂 tap to open your gift ✨</p>
     </div>
 
-    <audio id="bg-music" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
 
-    <div id="main-wrapper" class="main-content">
-        
-        <canvas id="flower-canvas"></canvas>
+    <div id="music-container" class="active">
+        <div class="music-card">
+            <img class="album-art" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" alt="Cover Foto">
+            
+            <div class="track-title" id="song-title-text">Semua Aku Dirayakan</div>
+            <div class="track-artist">Nadin Amizah</div>
 
-        <div class="spotify-player">
-            <img class="spotify-album-art" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=150" alt="Cover">
-            <div class="spotify-info">
-                <div class="spotify-title">Lagu Untuk Sayang 🤍</div>
-                <div class="spotify-artist">Your Favorite Artist</div>
+            <div class="timeline-container">
+                <div class="progress-timeline" id="timeline-bar">
+                    <div class="progress-fill" id="progress-fill-width">
+                        <div class="progress-pin"></div>
+                    </div>
+                </div>
             </div>
-            <div class="spotify-controls" onclick="togglePlay()" id="play-btn">⏸</div>
-            <div class="spotify-progress-container">
-                <div class="spotify-progress-bar" id="progress-bar"></div>
+            <div class="time-indicators">
+                <span id="current-time-display">0:00</span>
+                <span id="total-time-display">5:17</span>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn">⏮</button>
+                <div class="play-pause-btn" onclick="togglePlay()" id="play-btn">⏸</div>
+                <button class="control-btn">⏭</button>
+            </div>
+
+            <div class="volume-container">
+                <span class="volume-icon">🔈</span>
+                <div class="volume-bar"><div class="volume-fill"></div></div>
             </div>
         </div>
+
+        <div class="close-player-container">
+            <div class="close-player-circle" onclick="closePlayer()">×</div>
+        </div>
+    </div>
+
+    <div id="main-wrapper" class="main-content">
+        <canvas id="flower-canvas"></canvas>
 
         <section class="hero">
             <div class="fade-in-element visible">
                 <p class="tagline">a birthday serenade in bloom</p>
                 <h1>Happy Birthday,<br><span>My Everything</span></h1>
-                <p class="description">Today the whole universe is celebrating the day you were born into my world. You make ordinary days feel like magic and magical days feel like dreams.</p>
-                <a href="#message" class="scroll-down">
-                    Discover your birthday surprise
-                    <span>↓</span>
-                </a>
+                <p class="description">Today the whole universe is celebrating the day you were born into my world. You make ordinary days feel like magic.</p>
+                <button class="open-player-btn" onclick="openPlayer()">🎵 Open Music Player</button>
             </div>
         </section>
 
         <section id="message" class="message">
             <div class="fade-in-element">
-                <div class="message-flower-icons">🌸 🌺 🌸</div>
-                <p class="sub">from the bottom of my heart</p>
                 <h2>Today is the day<br><em>the world became</em><br>more beautiful.</h2>
-                <p class="message-text">The day you were born is the best thing that ever happened to this world — and to me. Every year I get to spend beside you is a gift I never take for granted.</p>
-                <p class="message-text">No bouquet in the world is big enough, no song sweet enough, no poem long enough — but know that every single piece of my heart is yours. Happy Birthday, my love. 🎂</p>
-                <div class="signature">— Yours, always &amp; forever 🌹</div>
+                <p class="message-text">The day you were born is the best thing that ever happened to this world — and to me. Setiap detik yang kulalui bersamamu adalah anugerah terindah.</p>
             </div>
         </section>
 
         <section class="pictures">
             <div class="fade-in-element">
-                <p class="sub">celebrating you</p>
-                <h2>Your Beautiful<br><em>Pictures</em></h2>
-                
+                <h2>Your Beautiful <em>Pictures</em></h2>
                 <div class="photo-grid">
                     <div class="photo-box">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" alt="Foto 1">
-                        <div class="caption">you</div>
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" alt="Foto 1"><div class="caption">you</div>
                     </div>
                     <div class="photo-box">
-                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500" alt="Foto 2">
-                        <div class="caption">are</div>
-                    </div>
-                    <div class="photo-box">
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500" alt="Foto 3">
-                        <div class="caption">so</div>
-                    </div>
-                    <div class="photo-box">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500" alt="Foto 4">
-                        <div class="caption">beautiful</div>
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500" alt="Foto 2"><div class="caption">are</div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <footer>
-            <p>🎂 crafted with love &amp; birthday petals 🌸</p>
-        </footer>
     </div>
 
     <script>
         const audio = document.getElementById('bg-music');
         const playBtn = document.getElementById('play-btn');
-        const progressBar = document.getElementById('progress-bar');
+        const progressFill = document.getElementById('progress-fill-width');
+        const currentTimeDisplay = document.getElementById('current-time-display');
+        const totalTimeDisplay = document.getElementById('total-time-display');
+        const musicContainer = document.getElementById('music-container');
 
-        // MEMBUKA KADO & PLAY MUSIK OTOMATIS
+        // BUKA KADO PERTAMA KALI
         function openGift() {
-            const overlay = document.getElementById('gift-overlay');
-            const mainContent = document.getElementById('main-wrapper');
-            
-            overlay.style.opacity = '0';
+            document.getElementById('gift-overlay').style.opacity = '0';
             setTimeout(() => {
-                overlay.style.display = 'none';
-                mainContent.style.opacity = '1';
+                document.getElementById('gift-overlay').style.display = 'none';
+                document.getElementById('main-wrapper').style.opacity = '1';
                 initCanvas();
                 
-                // Putar musik saat kado dibuka
+                // Otomatis menampilkan Pop up Player & memutar musik saat kado dibuka
+                musicContainer.classList.add('active');
                 audio.play().catch(err => console.log("Playback blocked"));
             }, 1000);
         }
 
-        // FUNGSI PLAY / PAUSE SPOTIFY WIDGET
+        function closePlayer() { musicContainer.classList.remove('active'); }
+        function openPlayer() { musicContainer.classList.add('active'); }
+
+        // PLAY & PAUSE MANAGEMENT
         function togglePlay() {
             if (audio.paused) {
                 audio.play();
@@ -466,82 +515,71 @@
             }
         }
 
-        // UPDATE PROGRESS BAR SPOTIFY
+        // FORMAT WAKTU (DETIK -> MENIT:DETIK)
+        function formatTime(secs) {
+            let minutes = Math.floor(secs / 60);
+            let seconds = Math.floor(secs % 60);
+            if (seconds < 10) seconds = "0" + seconds;
+            return minutes + ":" + seconds;
+        }
+
+        // UPDATE RUNNING TIMELINE & WAKTU SECARA REALTIME
         audio.addEventListener('timeupdate', () => {
-            const percentage = (audio.currentTime / audio.duration) * 100;
-            progressBar.style.width = percentage + '%';
+            if(audio.duration) {
+                const percentage = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = percentage + '%';
+                currentTimeDisplay.innerHTML = formatTime(audio.currentTime);
+            }
         });
 
-        // FUNGSI ANIMASI FADE-IN SAAT SCROLL
+        audio.addEventListener('loadedmetadata', () => {
+            totalTimeDisplay.innerHTML = formatTime(audio.duration);
+        });
+
+        // ANIMASI SCROLL FADE-IN
         const elementsToFade = document.querySelectorAll('.fade-in-element');
         function checkScroll() {
             elementsToFade.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                if (elementTop < window.innerHeight * 0.88) {
+                if (element.getBoundingClientRect().top < window.innerHeight * 0.88) {
                     element.classList.add('visible');
                 }
             });
         }
         window.addEventListener('scroll', checkScroll);
-        window.addEventListener('load', checkScroll);
 
-        // CANVAS EFEK KELOPAK BUNGA GUGUR
+        // CANVAS KELOPAK BUNGA GUGUR (DARKER VARIANT)
         function initCanvas() {
             const canvas = document.getElementById('flower-canvas');
             const ctx = canvas.getContext('2d');
-
-            function resize() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            window.addEventListener('resize', resize);
-            resize();
+            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            window.addEventListener('resize', resize); resize();
 
             const petals = [];
-            const maxPetals = 45;
-
             class Petal {
                 constructor() {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height - canvas.height;
                     this.size = Math.random() * 6 + 5;
-                    this.speedY = Math.random() * 1.0 + 0.7;
-                    this.speedX = Math.random() * 0.8 - 0.4;
-                    this.opacity = Math.random() * 0.6 + 0.3;
+                    this.speedY = Math.random() * 0.9 + 0.6;
+                    this.speedX = Math.random() * 0.6 - 0.3;
+                    this.opacity = Math.random() * 0.4 + 0.2;
                     this.rotation = Math.random() * 360;
-                    this.rotationSpeed = Math.random() * 1.2 - 0.6;
                 }
                 update() {
-                    this.y += this.speedY;
-                    this.x += this.speedX;
-                    this.rotation += this.rotationSpeed;
-                    if (this.y > canvas.height) {
-                        this.y = -10;
-                        this.x = Math.random() * canvas.width;
-                    }
+                    this.y += this.speedY; this.x += this.speedX;
+                    if (this.y > canvas.height) { this.y = -10; this.x = Math.random() * canvas.width; }
                 }
                 draw() {
-                    ctx.save();
-                    ctx.translate(this.x, this.y);
-                    ctx.rotate((this.rotation * Math.PI) / 180);
-                    ctx.beginPath();
-                    ctx.ellipse(0, 0, this.size, this.size / 1.6, 0, 0, 2 * Math.PI);
-                    ctx.fillStyle = `rgba(255, 192, 203, ${this.opacity})`;
-                    ctx.fill();
-                    ctx.restore();
+                    ctx.save(); ctx.translate(this.x, this.y); ctx.rotate((this.rotation * Math.PI) / 180);
+                    ctx.beginPath(); ctx.ellipse(0, 0, this.size, this.size / 1.6, 0, 0, 2 * Math.PI);
+                    ctx.fillStyle = `rgba(235, 104, 148, ${this.opacity})`;
+                    ctx.fill(); ctx.restore();
                 }
             }
-
-            for (let i = 0; i < maxPetals; i++) {
-                petals.push(new Petal());
-            }
-
+            for (let i = 0; i < 35; i++) petals.push(new Petal());
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                petals.forEach(p => {
-                    p.update();
-                    p.draw();
-                });
+                petals.forEach(p => { p.update(); p.draw(); });
                 requestAnimationFrame(animate);
             }
             animate();
