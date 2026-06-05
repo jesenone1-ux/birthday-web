@@ -1,1 +1,144 @@
-p
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#ff9ecf,#ffd6ec,#ffe8f5);
+      overflow:hidden;
+    }
+
+    .card{
+      width:90%;
+      max-width:400px;
+      background:white;
+      padding:35px;
+      border-radius:25px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.15);
+      animation:fade 1.5s ease;
+      position:relative;
+      z-index:2;
+    }
+
+    @keyframes fade{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    h1{
+      color:#ff4f9a;
+      font-size:35px;
+      margin-bottom:15px;
+    }
+
+    p{
+      color:#555;
+      line-height:1.6;
+      margin-bottom:25px;
+    }
+
+    button{
+      padding:12px 25px;
+      border:none;
+      border-radius:15px;
+      background:#ff4f9a;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    button:hover{
+      transform:scale(1.05);
+    }
+
+    .heart{
+      position:absolute;
+      color:pink;
+      animation:fall linear infinite;
+      top:-10px;
+    }
+
+    @keyframes fall{
+      to{
+        transform:translateY(110vh);
+      }
+    }
+
+    img{
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      object-fit:cover;
+      margin-bottom:20px;
+      border:5px solid #ffb6d9;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  
+  <img src="https://i.pinimg.com/736x/7f/84/0d/7f840d8d0d6c8e6c7e57cbf4a3cb17a4.jpg">
+
+  <h1>🎂 Happy Birthday 🎉</h1>
+
+  <p>
+    Selamat ulang tahun 💖<br><br>
+    Semoga panjang umur, sehat selalu,
+    makin bahagia, dan semua impian kamu tercapai ✨
+  </p>
+
+  <button onclick="playMusic()">Putar Musik 🎵</button>
+
+</div>
+
+<audio id="music" autoplay loop>
+  <source src="https://files.catbox.moe/6r7n6o.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function playMusic(){
+  document.getElementById("music").play();
+}
+
+for(let i = 0; i < 30; i++){
+
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+  document.body.appendChild(heart);
+}
+
+</script>
+
+</body>
+</html>
