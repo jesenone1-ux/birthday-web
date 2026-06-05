@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Najwatus Shobikhah 💙</title>
+
+<title>Letter In Space 💙</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -17,122 +18,200 @@
 }
 
 body{
-    background:linear-gradient(180deg,#89b4ff,#cfe2ff,#edf4ff);
-    overflow-x:hidden;
-    color:white;
-}
-
-.container{
-    width:100%;
-    min-height:100vh;
-    padding:20px;
-}
-
-.hero{
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(10px);
-    border-radius:30px;
-    padding:30px 20px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    position:relative;
     overflow:hidden;
+    background:black;
+    touch-action:none;
 }
 
-.title{
-    font-size:45px;
-    font-weight:700;
-    color:white;
-    margin-top:15px;
-}
+/* BACKGROUND */
 
-.name{
-    font-size:35px;
-    color:#dfefff;
-    font-weight:700;
-    margin-bottom:20px;
-}
-
-.desc{
-    font-size:17px;
-    line-height:1.8;
-    color:white;
-}
-
-.btn{
-    margin-top:25px;
-    padding:15px 35px;
-    border:none;
-    border-radius:20px;
-    background:white;
-    color:#6ea8ff;
-    font-size:18px;
-    font-weight:600;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.btn:hover{
-    transform:scale(1.05);
-}
-
-.section{
-    margin-top:25px;
-    background:rgba(255,255,255,0.18);
-    backdrop-filter:blur(10px);
-    border-radius:25px;
-    padding:25px;
-}
-
-.section h2{
-    margin-bottom:15px;
-    color:white;
-}
-
-.gallery{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-.gallery img{
-    width:100%;
-    border-radius:20px;
-}
-
-.letter{
-    line-height:1.9;
-    font-size:16px;
-}
-
-.footer{
-    text-align:center;
-    margin-top:30px;
-    color:white;
-    padding-bottom:30px;
-}
-
-.heart{
+.space{
     position:fixed;
-    top:-10px;
-    color:white;
-    animation:fall linear infinite;
-    z-index:0;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at center,#1f3b73 0%,#090b1a 70%);
 }
 
-@keyframes fall{
+/* STARS */
+
+.star{
+    position:absolute;
+    background:white;
+    border-radius:50%;
+    opacity:0.8;
+    animation:blink infinite alternate;
+}
+
+@keyframes blink{
+    from{
+        opacity:0.2;
+    }
     to{
-        transform:translateY(110vh);
+        opacity:1;
     }
 }
 
-.avatar{
-    width:140px;
-    height:140px;
+/* PLANET */
+
+.planet{
+    position:absolute;
+    width:220px;
+    height:220px;
     border-radius:50%;
-    border:5px solid white;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:
+    radial-gradient(circle at 30% 30%,#7ec8ff,#2f5fff,#182848);
+    box-shadow:
+    0 0 80px #4ea8ff,
+    0 0 150px #4ea8ff;
+}
+
+/* ORBIT */
+
+.orbit-container{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    top:0;
+    left:0;
+    transform-origin:center;
+}
+
+/* PHOTO */
+
+.photo{
+    position:absolute;
+    width:110px;
+    height:110px;
+    border-radius:20px;
+    overflow:hidden;
+    border:3px solid rgba(255,255,255,0.7);
+    box-shadow:0 0 20px rgba(255,255,255,0.4);
+    transition:0.3s;
+}
+
+.photo:hover{
+    transform:scale(1.1);
+}
+
+.photo img{
+    width:100%;
+    height:100%;
     object-fit:cover;
-    box-shadow:0 0 20px rgba(255,255,255,0.6);
+}
+
+/* CENTER TEXT */
+
+.center-text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    color:white;
+    z-index:5;
+    width:80%;
+}
+
+.center-text h1{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.center-text p{
+    font-size:17px;
+    line-height:1.7;
+}
+
+/* BUTTON */
+
+.open-btn{
+    margin-top:20px;
+    padding:14px 28px;
+    border:none;
+    border-radius:20px;
+    background:white;
+    color:#2f5fff;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* LETTER */
+
+.letter{
+    position:fixed;
+    width:90%;
+    max-width:450px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.2);
+    color:white;
+    padding:30px;
+    border-radius:25px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+    transition:0.4s;
+    z-index:20;
+}
+
+.letter.active{
+    transform:translate(-50%,-50%) scale(1);
+}
+
+.letter h2{
+    margin-bottom:15px;
+}
+
+.close{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* MUSIC BUTTON */
+
+.music{
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    border:none;
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(10px);
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+    z-index:50;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.center-text h1{
+    font-size:35px;
+}
+
+.photo{
+    width:85px;
+    height:85px;
+}
+
+.planet{
+    width:180px;
+    height:180px;
+}
+
 }
 
 </style>
@@ -140,96 +219,97 @@ body{
 
 <body>
 
-<div class="container">
+<div class="space" id="space">
 
-<div class="hero">
+<div class="planet"></div>
 
-<img class="avatar" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-3105B0B4F1C0B8D6E9BBA8B6A3E4A6B3-Png/150/150/AvatarHeadshot/Png/noFilter">
+<div class="orbit-container" id="orbit">
 
-<div class="title">🎂 Happy Birthday 🎉</div>
-
-<div class="name">
-Najwatus Shobikhah 💙
+<!-- FOTO 1 -->
+<div class="photo" style="top:15%; left:50%;">
+<img src="https://i.pinimg.com/736x/7f/84/0d/7f840d8d0d6c8e6c7e57cbf4a3cb17a4.jpg">
 </div>
 
-<div class="desc">
-Selamat ulang tahun ya sayangku 💖<br><br>
-
-Semoga panjang umur, sehat selalu,
-bahagia terus, dan semua impian kamu tercapai ✨<br><br>
-
-Terima kasih udah hadir di hidup aku,
-udah jadi alasan aku bahagia setiap hari 🌷
+<!-- FOTO 2 -->
+<div class="photo" style="top:30%; left:75%;">
+<img src="https://i.pinimg.com/736x/64/17/80/6417809b47bb89d9bbf94f56d88e4f75.jpg">
 </div>
 
-<button class="btn" onclick="playMusic()">
-Putar Musik 🎵
+<!-- FOTO 3 -->
+<div class="photo" style="top:60%; left:80%;">
+<img src="https://i.pinimg.com/736x/93/e5/75/93e5752e8b8d2c98d5933170f5481862.jpg">
+</div>
+
+<!-- FOTO 4 -->
+<div class="photo" style="top:75%; left:50%;">
+<img src="https://i.pinimg.com/736x/9e/cc/36/9ecc36f8e2b31b76d9fc1a74f71f8df9.jpg">
+</div>
+
+<!-- FOTO 5 -->
+<div class="photo" style="top:60%; left:15%;">
+<img src="https://i.pinimg.com/736x/7f/84/0d/7f840d8d0d6c8e6c7e57cbf4a3cb17a4.jpg">
+</div>
+
+<!-- FOTO 6 -->
+<div class="photo" style="top:30%; left:10%;">
+<img src="https://i.pinimg.com/736x/64/17/80/6417809b47bb89d9bbf94f56d88e4f75.jpg">
+</div>
+
+</div>
+
+<div class="center-text">
+
+<h1>
+💙 Happy Birthday 💙
+</h1>
+
+<p>
+Najwatus Shobikhah ✨<br><br>
+
+Aku bersyukur banget bisa punya kamu 💖
+Semoga kamu selalu bahagia,
+sehat,
+dan semua impian kamu tercapai 🌷
+</p>
+
+<button class="open-btn" onclick="openLetter()">
+Open Letter 💌
 </button>
 
 </div>
 
-<div class="section">
+</div>
 
-<h2>💌 Pesan Untuk Kamu</h2>
+<!-- LETTER -->
 
-<div class="letter">
+<div class="letter" id="letter">
 
-Hai cantiknya aku 💙<br><br>
+<div class="close" onclick="closeLetter()">×</div>
 
-Aku bersyukur banget bisa kenal kamu,
-bisa punya kamu, dan bisa nemenin hari-hari kamu ✨<br><br>
+<h2>Untuk Kamu 💙</h2>
 
-Aku harap di ulang tahun kamu ini,
-semua hal baik datang ke hidup kamu 🌷<br><br>
+<p style="line-height:1.9;">
 
-Tetap jadi cewek lucu,
-imut,
-dan paling spesial buat aku yaa 💖<br><br>
+Hai sayangkuu 💖<br><br>
 
-I love you so much 💙
+Selamat ulang tahun yaa 🌷<br><br>
+
+Makasih udah hadir di hidup aku,
+udah jadi alasan aku bahagia setiap hari ✨<br><br>
+
+Aku harap semua hal baik selalu datang ke kamu 💙<br><br>
+
+Aku sayang kamu selalu 💌
+
+</p>
 
 </div>
 
-</div>
+<!-- MUSIC -->
 
-<div class="section">
-
-<h2>📸 Kenangan Kita</h2>
-
-<div class="gallery">
-
-<img src="https://i.pinimg.com/736x/7f/84/0d/7f840d8d0d6c8e6c7e57cbf4a3cb17a4.jpg">
-
-<img src="https://i.pinimg.com/736x/64/17/80/6417809b47bb89d9bbf94f56d88e4f75.jpg">
-
-<img src="https://i.pinimg.com/736x/93/e5/75/93e5752e8b8d2c98d5933170f5481862.jpg">
-
-<img src="https://i.pinimg.com/736x/9e/cc/36/9ecc36f8e2b31b76d9fc1a74f71f8df9.jpg">
-
-</div>
-
-</div>
-
-<div class="section">
-
-<h2>💙 Will You Stay With Me?</h2>
-
-<div class="letter">
-
-Aku mau kita terus bersama,
-lewatin semua hal bareng-bareng 🌷<br><br>
-
-Makasih udah jadi rumah paling nyaman buat aku 💖
-
-</div>
-
-</div>
-
-<div class="footer">
-made with love for Najwatus Shobikhah 💙
-</div>
-
-</div>
+<button class="music" onclick="playMusic()">
+🎵
+</button>
 
 <audio id="music" loop>
 <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -237,24 +317,102 @@ made with love for Najwatus Shobikhah 💙
 
 <script>
 
+/* STARS */
+
+for(let i=0;i<150;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+star.style.width=Math.random()*3+"px";
+star.style.height=star.style.width;
+
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+
+star.style.animationDuration=
+(Math.random()*2+1)+"s";
+
+document.getElementById("space")
+.appendChild(star);
+
+}
+
+/* LETTER */
+
+function openLetter(){
+document.getElementById("letter")
+.classList.add("active");
+}
+
+function closeLetter(){
+document.getElementById("letter")
+.classList.remove("active");
+}
+
+/* MUSIC */
+
 function playMusic(){
-document.getElementById("music").play();
+document.getElementById("music")
+.play();
 }
 
-for(let i=0;i<40;i++){
+/* DRAG ROTATE */
 
-let heart=document.createElement("div");
+let orbit=document.getElementById("orbit");
 
-heart.className="heart";
-heart.innerHTML="💙";
+let rotate=0;
+let scale=1;
 
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(Math.random()*5+3)+"s";
-heart.style.fontSize=(Math.random()*20+15)+"px";
+let startX=0;
+let dragging=false;
 
-document.body.appendChild(heart);
+document.addEventListener("touchstart",(e)=>{
 
+dragging=true;
+startX=e.touches[0].clientX;
+
+});
+
+document.addEventListener("touchmove",(e)=>{
+
+if(!dragging)return;
+
+let moveX=e.touches[0].clientX;
+
+rotate += (moveX-startX)*0.3;
+
+orbit.style.transform=
+`rotate(${rotate}deg) scale(${scale})`;
+
+startX=moveX;
+
+});
+
+document.addEventListener("touchend",()=>{
+
+dragging=false;
+
+});
+
+/* ZOOM */
+
+document.addEventListener("wheel",(e)=>{
+
+if(e.deltaY<0){
+scale +=0.1;
+}else{
+scale -=0.1;
 }
+
+if(scale<0.5)scale=0.5;
+if(scale>2)scale=2;
+
+orbit.style.transform=
+`rotate(${rotate}deg) scale(${scale})`;
+
+});
 
 </script>
 
