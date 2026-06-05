@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday, My Everything ❤️</title>
+    <title>Happy Birthday, My Everything</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap');
 
@@ -16,12 +16,49 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #fff5f6;
-            color: #3e2723;
+            background-color: #ffffff;
+            color: #1a1a1a;
             overflow-x: hidden;
         }
 
-        /* Canvas Efek Kelopak Bunga */
+        /* 1. LAYAR PEMBUKA (GIFT SCREEN) */
+        #gift-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #111111;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: opacity 1s ease, visibility 1s;
+        }
+
+        .gift-box {
+            font-size: 4rem;
+            animation: bounce 2s infinite;
+            margin-bottom: 20px;
+        }
+
+        #gift-overlay p {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            color: #ccc;
+            font-weight: 300;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        /* 2. BACKGROUND CANVAS (KELOPAK BUNGA) */
         #flower-canvas {
             position: fixed;
             top: 0;
@@ -29,36 +66,55 @@
             width: 100%;
             height: 100%;
             z-index: 1;
-            pointer-events: none; /* Supaya tombol di bawahnya tetap bisa diklik */
+            pointer-events: none;
         }
 
-        /* Pengaturan Layout Tiap Section */
+        /* 3. STRUKTUR HALAMAN */
+        .main-content {
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
         section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 80px 20px;
             text-align: center;
             position: relative;
             z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        /* SECTION 1: HERO */
-        .hero p {
-            font-size: 1rem;
+        /* ANIMASI FADE IN SAAT SCROLL */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .fade-in-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* HERO SECTION */
+        .hero p.tagline {
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #b5838d;
-            margin-bottom: 15px;
+            letter-spacing: 4px;
+            color: #888;
+            margin-bottom: 20px;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             line-height: 1.2;
-            color: #d63384;
+            color: #1a1a1a;
             font-weight: 600;
         }
 
@@ -66,61 +122,70 @@
             display: block;
             font-style: italic;
             font-weight: 400;
-            color: #e56b6f;
+            color: #d63384;
+            margin-top: 5px;
         }
 
-        .hero .subtitle {
-            margin-top: 20px;
+        .hero .description {
+            margin-top: 25px;
             font-size: 1.1rem;
-            max-width: 500px;
-            color: #6d597a;
-        }
-
-        .btn {
-            margin-top: 40px;
-            padding: 15px 35px;
-            background: #d63384;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            box-shadow: 0 10px 20px rgba(214, 51, 132, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(214, 51, 132, 0.3);
-            background: #b02a6b;
-        }
-
-        /* SECTION 2: SURAT */
-        .message {
-            background-color: rgba(255, 245, 246, 0.7);
-            backdrop-filter: blur(5px);
-        }
-
-        .message-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(229, 107, 111, 0.1);
+            color: #555;
             max-width: 600px;
-            border: 1px solid rgba(229, 107, 111, 0.15);
+            line-height: 1.6;
+        }
+
+        .scroll-down {
+            margin-top: 50px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .scroll-down span {
+            display: block;
+            margin-top: 10px;
+            animation: arrow 1.5s infinite;
+        }
+
+        @keyframes arrow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* MESSAGE SECTION */
+        .message-flower-icons {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            letter-spacing: 10px;
+        }
+
+        .message p.sub {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #888;
         }
 
         .message h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: #d63384;
-            margin-bottom: 20px;
-            font-style: italic;
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            margin: 20px 0;
+            font-weight: 600;
+            line-height: 1.3;
         }
 
-        .message p {
+        .message h2 em {
+            font-style: italic;
+            color: #d63384;
+        }
+
+        .message-text {
             font-size: 1.05rem;
-            line-height: 1.8;
-            color: #555;
+            line-height: 1.9;
+            color: #444;
+            max-width: 650px;
             margin-bottom: 20px;
         }
 
@@ -128,180 +193,227 @@
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-size: 1.2rem;
-            color: #e56b6f;
-            margin-top: 30px;
-        }
-
-        /* SECTION 3: GALERI FOTO */
-        .gallery h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
             color: #d63384;
-            margin-bottom: 40px;
+            margin-top: 40px;
         }
 
-        .grid {
+        /* PICTURES SECTION */
+        .pictures p.sub {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .pictures h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+        }
+
+        .pictures h2 em {
+            font-style: italic;
+            color: #d63384;
+        }
+
+        .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
             width: 100%;
-            max-width: 900px;
         }
 
-        .photo-card {
-            background: white;
-            padding: 12px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+        .photo-box {
+            background: #fdfdfd;
+            border: 1px solid #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
-        .photo-card:hover {
-            transform: scale(1.03) rotate(2deg);
-        }
-
-        .photo-card img {
+        .photo-box img {
             width: 100%;
-            height: 250px;
+            height: 260px;
             object-fit: cover;
-            border-radius: 10px;
         }
 
-        .photo-card span {
-            display: block;
+        .photo-box .caption {
             margin-top: 10px;
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            color: #6d597a;
+            color: #666;
+            font-size: 0.95rem;
         }
 
+        /* FOOTER */
         footer {
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
-            font-size: 0.9rem;
-            color: #b5838d;
-            background: #fff5f6;
-            position: relative;
-            z-index: 2;
+            font-size: 0.85rem;
+            color: #999;
+            letter-spacing: 1px;
+            border-top: 1px solid #f5f5f5;
         }
     </style>
 </head>
 <body>
 
-    <canvas id="flower-canvas"></canvas>
+    <div id="gift-overlay" onclick="openGift()">
+        <div class="gift-box">🎁</div>
+        <p>🎂 tap to open your gift ✨</p>
+    </div>
 
-    <section class="hero">
-        <div class="content">
-            <p>a birthday serenade in bloom</p>
-            <h1>Happy Birthday,<br><span>My Everything</span></h1>
-            <p class="subtitle">Hari ini semesta ikut tersenyum merayakan hari lahirnya orang yang paling berharga di hidupku.</p>
-            <a href="#message" class="btn">Discover your surprise ↓</a>
-        </div>
-    </section>
+    <div id="main-wrapper" class="main-content">
+        
+        <canvas id="flower-canvas"></canvas>
 
-    <section id="message" class="message">
-        <div class="message-card">
-            <div style="font-size: 2rem; margin-bottom: 10px;">🌸 🌺 🌷</div>
-            <h2>Today is the day<br>the world became more beautiful.</h2>
-            <p>Selamat bertambah usia, ya! Kehadiranmu membawa warna tersendiri yang membuat hari-hari biasa terasa seperti sihir yang indah.</p>
-            <p>Terima kasih sudah lahir ke dunia ini, terima kasih sudah menjadi bagian terindah dalam cerita hidupku. Semoga kebahagiaan selalu memelukmu hari ini dan seterusnya.</p>
-            <div class="signature">— Yours, always & forever 🌹</div>
-        </div>
-    </section>
-
-    <section class="gallery">
-        <h2>Captured Moments</h2>
-        <div class="grid">
-            <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" alt="Foto 1">
-                <span>You</span>
+        <section class="hero">
+            <div class="fade-in-element visible">
+                <p class="tagline">a birthday serenade in bloom</p>
+                <h1>Happy Birthday,<br><span>My Everything</span></h1>
+                <p class="description">Today the whole universe is celebrating the day you were born into my world. You make ordinary days feel like magic.</p>
+                <a href="#message" class="scroll-down">
+                    Discover your birthday surprise
+                    <span>↓</span>
+                </a>
             </div>
-            <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500" alt="Foto 2">
-                <span>Are So</span>
-            </div>
-            <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500" alt="Foto 3">
-                <span>Beautiful</span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <p>🎂 crafted with love & birthday petals 🌸</p>
-    </footer>
+        <section id="message" class="message">
+            <div class="fade-in-element">
+                <div class="message-flower-icons">🌸 🌺 🌸</div>
+                <p class="sub">from the bottom of my heart</p>
+                <h2>Today is the day<br><em>the world became</em><br>more beautiful.</h2>
+                <p class="message-text">The day you were born is the best thing that ever happened to this world — and to me. Every year I get to spend beside you is a gift I never take for granted.</p>
+                <p class="message-text">No bouquet in the world is big enough, no song sweet enough, no poem long enough — but know that every single piece of my heart is yours. Happy Birthday, my love. 🎂</p>
+                <div class="signature">— Yours, always &amp; forever 🌹</div>
+            </div>
+        </section>
+
+        <section class="pictures">
+            <div class="fade-in-element">
+                <p class="sub">celebrating you</p>
+                <h2>Your Beautiful<br><em>Pictures</em></h2>
+                
+                <div class="photo-grid">
+                    <div class="photo-box">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" alt="Foto 1">
+                        <div class="caption">you</div>
+                    </div>
+                    <div class="photo-box">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500" alt="Foto 2">
+                        <div class="caption">are</div>
+                    </div>
+                    <div class="photo-box">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500" alt="Foto 3">
+                        <div class="caption">so</div>
+                    </div>
+                    <div class="photo-box">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500" alt="Foto 4">
+                        <div class="caption">beautiful</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>🎂 crafted with love &amp; birthday petals 🌸</p>
+        </footer>
+    </div>
 
     <script>
-        const canvas = document.getElementById('flower-canvas');
-        const ctx = canvas.getContext('2d');
-
-        // Menyesuaikan ukuran canvas dengan layar browser
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+        // FUNGSI MEMBUKA KADO
+        function openGift() {
+            const overlay = document.getElementById('gift-overlay');
+            const mainContent = document.getElementById('main-wrapper');
+            
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                mainContent.style.opacity = '1';
+                // Jalankan efek canvas setelah dibuka
+                initCanvas();
+            }, 1000);
         }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
 
-        // Kumpulan objek kelopak bunga
-        const petals = [];
-        const maxPetals = 40; // Jumlah kelopak di layar
+        // FUNGSI ANIMASI FADE-IN SAAT SCROLL
+        const elementsToFade = document.querySelectorAll('.fade-in-element');
+        
+        function checkScroll() {
+            elementsToFade.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight * 0.85) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
 
-        class Petal {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height - canvas.height;
-                this.size = Math.random() * 8 + 6; // ukuran kelopak
-                this.speedY = Math.random() * 1.5 + 1; // kecepatan jatuh
-                this.speedX = Math.random() * 1 - 0.5; // goyangan ke samping
-                this.opacity = Math.random() * 0.6 + 0.4;
-                this.rotation = Math.random() * 360;
-                this.rotationSpeed = Math.random() * 2 - 1;
+        // FUNGSI CANVAS KELOPAK BUNGA GUGUR
+        function initCanvas() {
+            const canvas = document.getElementById('flower-canvas');
+            const ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
             }
+            window.addEventListener('resize', resize);
+            resize();
 
-            update() {
-                this.y += this.speedY;
-                this.x += this.speedX;
-                this.rotation += this.rotationSpeed;
+            const petals = [];
+            const maxPetals = 35;
 
-                // Jika kelopak sudah jatuh melebihi bawah layar, reset ke atas lagi
-                if (this.y > canvas.height) {
-                    this.y = -10;
+            class Petal {
+                constructor() {
                     this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height - canvas.height;
+                    this.size = Math.random() * 7 + 5;
+                    this.speedY = Math.random() * 1.2 + 0.8;
+                    this.speedX = Math.random() * 1 - 0.5;
+                    this.opacity = Math.random() * 0.5 + 0.3;
+                    this.rotation = Math.random() * 360;
+                    this.rotationSpeed = Math.random() * 1.5 - 0.75;
+                }
+                update() {
+                    this.y += this.speedY;
+                    this.x += this.speedX;
+                    this.rotation += this.rotationSpeed;
+                    if (this.y > canvas.height) {
+                        this.y = -10;
+                        this.x = Math.random() * canvas.width;
+                    }
+                }
+                draw() {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate((this.rotation * Math.PI) / 180);
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, this.size, this.size / 1.6, 0, 0, 2 * Math.PI);
+                    ctx.fillStyle = `rgba(254, 200, 216, ${this.opacity})`;
+                    ctx.fill();
+                    ctx.restore();
                 }
             }
 
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate((this.rotation * Math.PI) / 180);
-                ctx.beginPath();
-                
-                // Membuat bentuk kelopak oval melengkung menggunakan bezierCurve
-                ctx.ellipse(0, 0, this.size, this.size / 1.5, 0, 0, 2 * Math.PI);
-                
-                // Warna kelopak bunga pastel (Pink lembut)
-                ctx.fillStyle = `rgba(255, 182, 193, ${this.opacity})`;
-                ctx.fill();
-                ctx.restore();
+            for (let i = 0; i < maxPetals; i++) {
+                petals.push(new Petal());
             }
-        }
 
-        // Inisialisasi membuat kelopak bunga pertama kali
-        for (let i = 0; i < maxPetals; i++) {
-            petals.push(new Petal());
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                petals.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
         }
-
-        // Loop animasi
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            petals.forEach(petal => {
-                petal.update();
-                petal.draw();
-            });
-            requestAnimationFrame(animate);
-        }
-        animate();
     </script>
 </body>
 </html>
