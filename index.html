@@ -1,141 +1,259 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Najwatus Shobikhah 💙</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, sans-serif;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    body{
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background:linear-gradient(135deg,#ff9ecf,#ffd6ec,#ffe8f5);
-      overflow:hidden;
-    }
+<style>
 
-    .card{
-      width:90%;
-      max-width:400px;
-      background:white;
-      padding:35px;
-      border-radius:25px;
-      text-align:center;
-      box-shadow:0 10px 30px rgba(0,0,0,0.15);
-      animation:fade 1.5s ease;
-      position:relative;
-      z-index:2;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-    @keyframes fade{
-      from{
-        opacity:0;
-        transform:translateY(20px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
+body{
+    background:linear-gradient(180deg,#89b4ff,#cfe2ff,#edf4ff);
+    overflow-x:hidden;
+    color:white;
+}
 
-    h1{
-      color:#ff4f9a;
-      font-size:35px;
-      margin-bottom:15px;
-    }
+.container{
+    width:100%;
+    min-height:100vh;
+    padding:20px;
+}
 
-    p{
-      color:#555;
-      line-height:1.6;
-      margin-bottom:25px;
-    }
+.hero{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border-radius:30px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    position:relative;
+    overflow:hidden;
+}
 
-    button{
-      padding:12px 25px;
-      border:none;
-      border-radius:15px;
-      background:#ff4f9a;
-      color:white;
-      font-size:16px;
-      cursor:pointer;
-      transition:0.3s;
-    }
+.title{
+    font-size:45px;
+    font-weight:700;
+    color:white;
+    margin-top:15px;
+}
 
-    button:hover{
-      transform:scale(1.05);
-    }
+.name{
+    font-size:35px;
+    color:#dfefff;
+    font-weight:700;
+    margin-bottom:20px;
+}
 
-    .heart{
-      position:absolute;
-      color:pink;
-      animation:fall linear infinite;
-      top:-10px;
-    }
+.desc{
+    font-size:17px;
+    line-height:1.8;
+    color:white;
+}
 
-    @keyframes fall{
-      to{
+.btn{
+    margin-top:25px;
+    padding:15px 35px;
+    border:none;
+    border-radius:20px;
+    background:white;
+    color:#6ea8ff;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+.section{
+    margin-top:25px;
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:25px;
+}
+
+.section h2{
+    margin-bottom:15px;
+    color:white;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:20px;
+}
+
+.letter{
+    line-height:1.9;
+    font-size:16px;
+}
+
+.footer{
+    text-align:center;
+    margin-top:30px;
+    color:white;
+    padding-bottom:30px;
+}
+
+.heart{
+    position:fixed;
+    top:-10px;
+    color:white;
+    animation:fall linear infinite;
+    z-index:0;
+}
+
+@keyframes fall{
+    to{
         transform:translateY(110vh);
-      }
     }
+}
 
-    img{
-      width:120px;
-      height:120px;
-      border-radius:50%;
-      object-fit:cover;
-      margin-bottom:20px;
-      border:5px solid #ffb6d9;
-    }
-  </style>
+.avatar{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    border:5px solid white;
+    object-fit:cover;
+    box-shadow:0 0 20px rgba(255,255,255,0.6);
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="card">
-  
-  <img src="https://i.pinimg.com/736x/7f/84/0d/7f840d8d0d6c8e6c7e57cbf4a3cb17a4.jpg">
+<div class="container">
 
-  <h1>🎂 Happy Birthday 🎉</h1>
+<div class="hero">
 
-  <p>
-    Selamat ulang tahun 💖<br><br>
-    Semoga panjang umur, sehat selalu,
-    makin bahagia, dan semua impian kamu tercapai ✨
-  </p>
+<img class="avatar" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-3105B0B4F1C0B8D6E9BBA8B6A3E4A6B3-Png/150/150/AvatarHeadshot/Png/noFilter">
 
-  <button onclick="playMusic()">Putar Musik 🎵</button>
+<div class="title">🎂 Happy Birthday 🎉</div>
+
+<div class="name">
+Najwatus Shobikhah 💙
+</div>
+
+<div class="desc">
+Selamat ulang tahun ya sayangku 💖<br><br>
+
+Semoga panjang umur, sehat selalu,
+bahagia terus, dan semua impian kamu tercapai ✨<br><br>
+
+Terima kasih udah hadir di hidup aku,
+udah jadi alasan aku bahagia setiap hari 🌷
+</div>
+
+<button class="btn" onclick="playMusic()">
+Putar Musik 🎵
+</button>
 
 </div>
 
-<audio id="music" autoplay loop>
-  <source src="https://files.catbox.moe/6r7n6o.mp3" type="audio/mpeg">
+<div class="section">
+
+<h2>💌 Pesan Untuk Kamu</h2>
+
+<div class="letter">
+
+Hai cantiknya aku 💙<br><br>
+
+Aku bersyukur banget bisa kenal kamu,
+bisa punya kamu, dan bisa nemenin hari-hari kamu ✨<br><br>
+
+Aku harap di ulang tahun kamu ini,
+semua hal baik datang ke hidup kamu 🌷<br><br>
+
+Tetap jadi cewek lucu,
+imut,
+dan paling spesial buat aku yaa 💖<br><br>
+
+I love you so much 💙
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>📸 Kenangan Kita</h2>
+
+<div class="gallery">
+
+<img src="https://i.pinimg.com/736x/7f/84/0d/7f840d8d0d6c8e6c7e57cbf4a3cb17a4.jpg">
+
+<img src="https://i.pinimg.com/736x/64/17/80/6417809b47bb89d9bbf94f56d88e4f75.jpg">
+
+<img src="https://i.pinimg.com/736x/93/e5/75/93e5752e8b8d2c98d5933170f5481862.jpg">
+
+<img src="https://i.pinimg.com/736x/9e/cc/36/9ecc36f8e2b31b76d9fc1a74f71f8df9.jpg">
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>💙 Will You Stay With Me?</h2>
+
+<div class="letter">
+
+Aku mau kita terus bersama,
+lewatin semua hal bareng-bareng 🌷<br><br>
+
+Makasih udah jadi rumah paling nyaman buat aku 💖
+
+</div>
+
+</div>
+
+<div class="footer">
+made with love for Najwatus Shobikhah 💙
+</div>
+
+</div>
+
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 
 function playMusic(){
-  document.getElementById("music").play();
+document.getElementById("music").play();
 }
 
-for(let i = 0; i < 30; i++){
+for(let i=0;i<40;i++){
 
-  let heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "💖";
+let heart=document.createElement("div");
 
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
-  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+heart.className="heart";
+heart.innerHTML="💙";
 
-  document.body.appendChild(heart);
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*5+3)+"s";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+
+document.body.appendChild(heart);
+
 }
 
 </script>
