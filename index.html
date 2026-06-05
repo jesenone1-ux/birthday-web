@@ -1,238 +1,307 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>happy birthday nath 💙</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Everything ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap');
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff5f6;
+            color: #3e2723;
+            overflow-x: hidden;
+        }
 
-body{
-    background:linear-gradient(-45deg,#0f172a,#1e3a8a,#2563eb,#60a5fa);
-    background-size:400% 400%;
-    animation:bg 12s ease infinite;
-    overflow-x:hidden;
-    color:white;
-}
+        /* Canvas Efek Kelopak Bunga */
+        #flower-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none; /* Supaya tombol di bawahnya tetap bisa diklik */
+        }
 
-@keyframes bg{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
+        /* Pengaturan Layout Tiap Section */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
 
-.hero{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
-}
+        /* SECTION 1: HERO */
+        .hero p {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #b5838d;
+            margin-bottom: 15px;
+        }
 
-h1{
-    font-size:4rem;
-    font-family:'Dancing Script',cursive;
-    text-shadow:0 0 20px rgba(255,255,255,.5);
-}
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            color: #d63384;
+            font-weight: 600;
+        }
 
-.subtitle{
-    margin-top:10px;
-    font-size:1.2rem;
-    opacity:.9;
-}
+        .hero h1 span {
+            display: block;
+            font-style: italic;
+            font-weight: 400;
+            color: #e56b6f;
+        }
 
-.btn{
-    margin-top:35px;
-    padding:15px 35px;
-    border:none;
-    border-radius:50px;
-    background:white;
-    color:#2563eb;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
+        .hero .subtitle {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            max-width: 500px;
+            color: #6d597a;
+        }
 
-.btn:hover{
-    transform:scale(1.08);
-}
+        .btn {
+            margin-top: 40px;
+            padding: 15px 35px;
+            background: #d63384;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 10px 20px rgba(214, 51, 132, 0.2);
+            transition: all 0.3s ease;
+        }
 
-.section{
-    max-width:900px;
-    margin:auto;
-    padding:80px 25px;
-}
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(214, 51, 132, 0.3);
+            background: #b02a6b;
+        }
 
-.card{
-    background:rgba(255,255,255,.12);
-    backdrop-filter:blur(15px);
-    border-radius:25px;
-    padding:35px;
-    line-height:2;
-    box-shadow:0 0 25px rgba(255,255,255,.15);
-}
+        /* SECTION 2: SURAT */
+        .message {
+            background-color: rgba(255, 245, 246, 0.7);
+            backdrop-filter: blur(5px);
+        }
 
-.card h2{
-    text-align:center;
-    margin-bottom:20px;
-    font-family:'Dancing Script',cursive;
-    font-size:2.5rem;
-}
+        .message-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(229, 107, 111, 0.1);
+            max-width: 600px;
+            border: 1px solid rgba(229, 107, 111, 0.15);
+        }
 
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    margin-top:30px;
-}
+        .message h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #d63384;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
 
-.gallery img{
-    width:100%;
-    border-radius:20px;
-    object-fit:cover;
-    transition:.4s;
-    box-shadow:0 0 15px rgba(255,255,255,.25);
-}
+        .message p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
 
-.gallery img:hover{
-    transform:scale(1.05);
-}
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #e56b6f;
+            margin-top: 30px;
+        }
 
-.footer{
-    text-align:center;
-    padding:50px 20px;
-    font-size:1rem;
-}
+        /* SECTION 3: GALERI FOTO */
+        .gallery h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #d63384;
+            margin-bottom: 40px;
+        }
 
-.heart{
-    position:fixed;
-    top:-20px;
-    color:white;
-    animation:fall linear forwards;
-    z-index:999;
-}
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 900px;
+        }
 
-@keyframes fall{
-    to{
-        transform:translateY(110vh);
-        opacity:0;
-    }
-}
-</style>
+        .photo-card {
+            background: white;
+            padding: 12px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: scale(1.03) rotate(2deg);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .photo-card span {
+            display: block;
+            margin-top: 10px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #6d597a;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #b5838d;
+            background: #fff5f6;
+            position: relative;
+            z-index: 2;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="hero">
-    <h1>happy birthday nath 💙</h1>
-    <p class="subtitle">21 years of your beautiful story</p>
+    <canvas id="flower-canvas"></canvas>
 
-    <button class="btn" onclick="openSurprise()">
-        buka pesan dari jess
-    </button>
+    <section class="hero">
+        <div class="content">
+            <p>a birthday serenade in bloom</p>
+            <h1>Happy Birthday,<br><span>My Everything</span></h1>
+            <p class="subtitle">Hari ini semesta ikut tersenyum merayakan hari lahirnya orang yang paling berharga di hidupku.</p>
+            <a href="#message" class="btn">Discover your surprise ↓</a>
+        </div>
+    </section>
 
-    <audio id="music" loop>
-        <source src="one-call-away.mp3" type="audio/mpeg">
-    </audio>
-</div>
+    <section id="message" class="message">
+        <div class="message-card">
+            <div style="font-size: 2rem; margin-bottom: 10px;">🌸 🌺 🌷</div>
+            <h2>Today is the day<br>the world became more beautiful.</h2>
+            <p>Selamat bertambah usia, ya! Kehadiranmu membawa warna tersendiri yang membuat hari-hari biasa terasa seperti sihir yang indah.</p>
+            <p>Terima kasih sudah lahir ke dunia ini, terima kasih sudah menjadi bagian terindah dalam cerita hidupku. Semoga kebahagiaan selalu memelukmu hari ini dan seterusnya.</p>
+            <div class="signature">— Yours, always & forever 🌹</div>
+        </div>
+    </section>
 
-<div class="section" id="surprise" style="display:none;">
-
-    <div class="card">
-        <h2>untuk nath 🤍</h2>
-
-        <p>
-        selamat ulang tahun yang ke-21 sayangku, nath 🎂💙
-        <br><br>
-
-        hari ini adalah hari yang sangat spesial karena dunia pernah menghadirkan seseorang sebaik dan seindah kamu. aku bersyukur karena dari sekian banyak orang di dunia, aku dipertemukan dengan kamu, seseorang yang selalu bisa membuat hariku terasa lebih berarti.
-        <br><br>
-
-        terima kasih karena sudah hadir dalam hidupku, terima kasih untuk setiap perhatian kecil, setiap tawa, setiap cerita, dan setiap momen yang kita lewati bersama. mungkin aku tidak selalu sempurna, tapi percayalah, perasaanku untukmu selalu tulus.
-        <br><br>
-
-        di usia yang baru ini, aku berharap semua impianmu satu per satu menjadi kenyataan. semoga langkahmu selalu dimudahkan, kesehatanmu selalu terjaga, dan kebahagiaan selalu menemukan jalannya untuk datang kepadamu.
-        <br><br>
-
-        aku ingin kamu tahu bahwa kamu sangat berharga. lebih dari yang mungkin kamu sadari. dan di antara semua hal yang aku syukuri, salah satu yang paling besar adalah karena aku memiliki kesempatan untuk mengenal dan mencintaimu.
-        <br><br>
-
-        teruslah menjadi pribadi yang baik, kuat, dan hangat seperti yang selama ini aku kenal. aku akan selalu mendukungmu, mendoakanmu, dan menyayangimu.
-        <br><br>
-
-        selamat ulang tahun cintaku, selamat ulang tahun nath.
-        <br><br>
-
-        aku sayang kamu, hari ini, besok, dan seterusnya. 🤍
-        <br><br>
-
-        — jess
-        </p>
-    </div>
-
-    <div class="section">
-        <div class="card">
-            <h2>our favorite moments 📸</h2>
-
-            <div class="gallery">
-                <img src="foto1.jpg">
-                <img src="foto2.jpg">
-                <img src="foto3.jpg">
-                <img src="foto4.jpg">
-                <img src="foto5.jpg">
-                <img src="foto6.jpg">
-                <img src="foto7.jpg">
+    <section class="gallery">
+        <h2>Captured Moments</h2>
+        <div class="grid">
+            <div class="photo-card">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" alt="Foto 1">
+                <span>You</span>
+            </div>
+            <div class="photo-card">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500" alt="Foto 2">
+                <span>Are So</span>
+            </div>
+            <div class="photo-card">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500" alt="Foto 3">
+                <span>Beautiful</span>
             </div>
         </div>
-    </div>
+    </section>
 
-</div>
+    <footer>
+        <p>🎂 crafted with love & birthday petals 🌸</p>
+    </footer>
 
-<div class="footer">
-    💙 21 years of your beautiful story, and i'm grateful to be a part of it.
-</div>
+    <script>
+        const canvas = document.getElementById('flower-canvas');
+        const ctx = canvas.getContext('2d');
 
-<script>
+        // Menyesuaikan ukuran canvas dengan layar browser
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
-function openSurprise(){
-    document.getElementById("surprise").style.display="block";
-    document.getElementById("music").play();
+        // Kumpulan objek kelopak bunga
+        const petals = [];
+        const maxPetals = 40; // Jumlah kelopak di layar
 
-    window.scrollTo({
-        top:window.innerHeight,
-        behavior:'smooth'
-    });
-}
+        class Petal {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height - canvas.height;
+                this.size = Math.random() * 8 + 6; // ukuran kelopak
+                this.speedY = Math.random() * 1.5 + 1; // kecepatan jatuh
+                this.speedX = Math.random() * 1 - 0.5; // goyangan ke samping
+                this.opacity = Math.random() * 0.6 + 0.4;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 2 - 1;
+            }
 
-function createHeart(){
-    const heart=document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML="🤍";
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
 
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(Math.random()*20+15)+"px";
-    heart.style.animationDuration=(Math.random()*4+4)+"s";
+                // Jika kelopak sudah jatuh melebihi bawah layar, reset ke atas lagi
+                if (this.y > canvas.height) {
+                    this.y = -10;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
 
-    document.body.appendChild(heart);
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.beginPath();
+                
+                // Membuat bentuk kelopak oval melengkung menggunakan bezierCurve
+                ctx.ellipse(0, 0, this.size, this.size / 1.5, 0, 0, 2 * Math.PI);
+                
+                // Warna kelopak bunga pastel (Pink lembut)
+                ctx.fillStyle = `rgba(255, 182, 193, ${this.opacity})`;
+                ctx.fill();
+                ctx.restore();
+            }
+        }
 
-    setTimeout(()=>{
-        heart.remove();
-    },8000);
-}
+        // Inisialisasi membuat kelopak bunga pertama kali
+        for (let i = 0; i < maxPetals; i++) {
+            petals.push(new Petal());
+        }
 
-setInterval(createHeart,300);
-
-</script>
-
+        // Loop animasi
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            petals.forEach(petal => {
+                petal.update();
+                petal.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 </body>
 </html>
